@@ -1,0 +1,75 @@
+
+body{
+    background: #2975d1; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #2975d1 0%, #35e0ff 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, #2975d1 0%,#35e0ff 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, #2975d1 0%,#35e0ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2975d1', endColorstr='#35e0ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.section{
+    min-height: 100px;
+    padding: 10px 0px;
+}
+
+.paper{
+    box-shadow: 0 15px 30px 0 rgba(0,0,0,.11), 0 5px 15px 0 rgba(0,0,0,.08);
+    padding: 10px;
+}
+
+.bw-white{
+    background-color: #fff;
+}
+
+.rounded{
+    border-radius: 10px !important;
+}
+
+.rounded-t{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.rounded-b{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+
+
+.section#header{
+    padding-top: 0;
+    min-height: 0px;
+
+}
+
+.section#calculator{
+    
+}
+
+.section#print-sheet{
+    background-color: #f8f8fb;
+}
+
+.budget{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.section#footer{
+    background-color: rgb(46, 46, 46);
+    color: white;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    min-height: 0px;
+}
+
+@media print{
+    .budget{
+        border: 1px solid black;
+    }
+    @page{
+        size: A3;
+    }
+}
