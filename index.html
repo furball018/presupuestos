@@ -95,12 +95,19 @@
                     <!-- END BUDGET TEMPLATE-->
 
                 </div>
-                <div class="row">
+                <div class="row" v-show="budgets.length != 0">
                     <div class="col-sm">
-                        <p class="text-right mb-0 mt-5">{{ budgets.length }} items</p>
+                        <hr>
+                        <p class="text-right mb-0 mt-5">{{ budgets.length }} item{{ budgets.length > 1? 's' : '' }}</p>
                         <p class="total">
                             Total: ${{ calcTotal }}
                         </p>
+                    </div>
+                </div>
+                <div class="col-sm" v-show="budgets.length == 0">
+                    <div class="alert alert-primary text-center  align-middle">
+                        <i class="material-icons  align-middle mr-3">warning</i>
+                        Sin presupuestos para mostrar!
                     </div>
                 </div>
             </div>
