@@ -6,8 +6,10 @@ var calcularotApp = new Vue({
     methods:{
         addBudget: function(){
             budgetApp.budgets.push({
-                'nombre': 'presupuesto agregado',
-                'precio': 99
+                'topColor': 'top-blue',
+                'name': 'presupuesto 1',
+                'description': '100 hojas SA3 color',
+                'cost': 30
             });
         }
     }
@@ -20,17 +22,37 @@ var budgetApp = new Vue({
     data: {
         budgets: [
             {
-                'nombre': 'presupuesto 1',
-                'precio': 30
+                'topColor': 'top-blue',
+                'name': 'presupuesto 1',
+                'description': '100 hojas SA3 color',
+                'cost': 30
             },
             {
-                'nombre': 'presupuesto 2',
-                'precio': 40
+                'topColor': 'top-purple',
+                'name': 'presupuesto 2',
+                'description': '100 hojas SA3 Adhesivo color',
+                'cost': 70
             },
             {
-                'nombre': 'presupuesto 3',
-                'precio': 50
+                'topColor': 'top-gray',
+                'name': 'presupuesto 3',
+                'description': '100 hojas SA3 asdasdasdasdasd dasdasd asdasdasd asdasdasdasd asdasda asd color',
+                'cost': 40
             },
         ]
+    },
+    methods:{
+        removeBudget: function(i){
+            this.budgets.splice(i, 1);
+        }
+    },
+    computed:{
+        calcTotal: function(){
+            var t = 0;
+            this.budgets.forEach(b => {
+                t += b.cost;
+            });
+            return t;
+        }
     }
 });
