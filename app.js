@@ -1,5 +1,22 @@
-var app = new Vue({
-    el: '#app',
+var calcularotApp = new Vue({
+    el: '#calculator-app',
+    data:{
+        selected: ''
+    },
+    methods:{
+        addBudget: function(){
+            budgetApp.budgets.push({
+                'nombre': 'presupuesto agregado',
+                'precio': 99
+            });
+        }
+    }
+});
+
+
+
+var budgetApp = new Vue({
+    el: '#budget-app',
     data: {
         budgets: [
             {

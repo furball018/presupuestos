@@ -8,29 +8,58 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div id="app">
-        
-        <div id="header" class="section d-print-none">
-            <div class="container">
-                <div class="row">
-                    <div class="col paper bw-white rounded-b">
-                        header
-                    </div>
+<body>        
+    <div id="header" class="section d-print-none">
+        <div class="container">
+            <div class="row">
+                <div class="col paper bw-white rounded-b">
+                    header
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="calculator-app">
+        <div class="container p-0">
+            <div class="row">
+                <div class="col-4">
+                    <select name="budget-type" id="budget-selector" class="form-control rounded" v-model="selected">
+                        <option disabled value="">Seleccionar...</option>
+                        <option value="laser-color">Laser Color</option>
+                        <option value="laser-bn">Laser Blanco y negro</option>
+                        <option value="plot-papel">Ploteos en papel</option>
+                    </select>
                 </div>
             </div>
         </div>
 
         <div id="calculator" class="section d-print-none">
-            <div class="container">
+    
+            <div class="container" v-show="selected == 'laser-color'">
                 <div class="row">
                     <div class="col paper bw-white rounded">
-                        calculator
+                        Laser Color
+                        <button v-on:click="addBudget()" class="btn btn-dark">Agregar presupuesto</button>
                     </div>
                 </div>
             </div>
+    
+            <div class="container" v-show="selected == 'laser-bn'">
+                <div class="row">
+                    <div class="col paper bw-white rounded">
+                        Laser BN
+                    </div>
+                </div>
+            </div>
+    
         </div>
+    </div>
         
+
+
+    <div id="budget-app">
         <div id="print-sheet" class="section">
             <div class="container">
                 <div class="row budget" v-for="budget in budgets">
@@ -40,14 +69,15 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div id="footer" class="section d-print-none">
-            <div class="container">
-                <div class="row">
-                    footer
-                </div>
+    <div id="footer" class="section d-print-none">
+        <div class="container">
+            <div class="row">
+                footer
             </div>
         </div>
+    </div>
 
     </div>
     <script src="app.js"></script>
