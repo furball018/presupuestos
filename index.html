@@ -13,7 +13,6 @@
 <body>
 
     <!-- HEADER -->
-
     <div id="header" class="section d-print-none">
         <div class="container">
             <div class="row">
@@ -23,10 +22,12 @@
             </div>
         </div>
     </div>
+    <!-- END HEADER -->
 
     <!-- CALCULATOR -->
+    <div id="calculator-app" class="d-print-none mt-3">
 
-    <div id="calculator-app" class="d-print-none">
+        <!-- SELECTOR -->
         <div class="container p-0">
             <div class="row">
                 <div class="col-md-4">
@@ -39,18 +40,124 @@
                 </div>
             </div>
         </div>
+        <!-- END SELECTOR -->
 
         <div id="calculator" class="section">
     
+            <!-- LASER COLOR -->
             <div class="container animated fadeIn" v-show="selected == 'laser-color'">
                 <div class="row">
-                    <div class="col paper bw-white rounded">
-                        Laser Color
-                        <button v-on:click="addBudget()" class="btn btn-dark">Agregar presupuesto</button>
+                    <div class="col-md paper bw-white rounded">
+                        <h4>Laser Color</h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 pl-0">
+                                    <h5>Detalles</h5>
+                                    <form>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-papel" class="input-group-text">Papel</label>
+                                            </div>
+                                            <select name="i-papel" id="i-papel" class="form-control" v-model="laserColor.papel">
+                                                <option value="SA3G">SA3 Grueso</option>
+                                                <option value="SA3F">SA3 Fino</option>
+                                                <option value="SA3AA">SA3 Autoadhesivo</option>
+                                                <option value="SA3S">SA3 Especial</option>
+                                                <option value="SA3I">SA3 Imán</option>
+                                                <option value="A4G">A4 Grueso</option>
+                                                <option value="A4F">A4 Fino</option>
+                                                <option value="A4AA">A4 Autoadhesivo</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-dimensiones" class="input-group-text">Dimensiones</label>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="X mm..." min="0" v-model="laserColor.dimensiones.x"/>
+                                            <input type="number" class="form-control" placeholder="Y mm..." min="0" v-model="laserColor.dimensiones.y"/>
+                                            <input type="number" class="form-control" placeholder="márgen mm..." min="0" v-model="laserColor.dimensiones.m"/>
+                                        </div>
+                                        
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-hojas" class="input-group-text">Hojas</label>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="cantidad..." min="0" v-model="laserColor.hojas"/>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-lados" class="input-group-text">Lados Impresos</label>
+                                            </div>
+                                            <select name="i-lados" id="i-lados" class="form-control" v-model="laserColor.lados">
+                                                <option value="1">Sólo frente</option>
+                                                <option value="2">Ambos lados</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-laminado" class="input-group-text">Laminado</label>
+                                            </div>
+                                            <select name="i-laminado" id="i-laminado" class="form-control" v-model="laserColor.laminado">
+                                                <option value="0">Sin laminar</option>
+                                                <option value="1">Laminado frente</option>
+                                                <option value="2">Laminado ambos lados</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-dispos" class="input-group-text">Diseño/Pose</label>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="$..." min="0" v-model="laserColor.dispos"/>
+                                        </div>
+
+                                        <button type="button" class="btn btn-sm btn-outline-secondary mt-2" v-on:click="toggleRecortes">{{ laserColor.showRecortes ? 'Quitar recortes' : 'Agregar recortes' }}</button>
+
+                                        <div class="input-group input-group-sm mt-2" v-if="laserColor.showRecortes">
+                                            <div class="input-group-prepend">
+                                                <label for="i-recortes" class="input-group-text">Recortes</label>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="X mm..." min="0" v-model="laserColor.recortes.x"/>
+                                            <input type="number" class="form-control" placeholder="Y mm..." min="0" v-model="laserColor.recortes.y"/>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2" v-if="laserColor.showRecortes">
+                                            <div class="input-group-prepend">
+                                                <label for="i-corte" class="input-group-text">Tipo de cortes</label>
+                                            </div>
+                                            <select name="i-corte" id="i-corte" class="form-control" v-model="laserColor.corte">
+                                                <option value="no">Sin cortar</option>
+                                                <option value="guillotina">Corte en guillotina</option>
+                                                <option value="mano">Corte a mano</option>
+                                            </select>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <h5>Resultados</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Precio por página<span class="resultado float-right"></span></li>
+                                        <li class="list-group-item">Laminado<span class="resultado float-right"></span></li>
+                                        <li class="list-group-item">Diseño/Pose<span class="resultado float-right"></span></li>
+                                        <li class="list-group-item">Total<span class="resultado float-right"></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="mt-2 mb-2">
+                        <button v-on:click="addBudget()" class="btn btn-dark float-right ml-2">Agregar presupuesto</button>
+                        <button v-on:click="" class="btn btn-light float-right ml-2">Reiniciar</button>
                     </div>
                 </div>
             </div>
-    
+            <!-- END LASER COLOR -->
+
+            <!-- LASER BLANCO Y NEGRO -->
             <div class="container animated fadeIn" v-show="selected == 'laser-bn'">
                 <div class="row">
                     <div class="col paper bw-white rounded">
@@ -58,6 +165,7 @@
                     </div>
                 </div>
             </div>
+            <!-- END LASER BLANCO Y NEGRO -->
     
         </div>
     </div>
@@ -66,7 +174,7 @@
 
     <div id="budget-app">
         <div id="print-sheet" class="section">
-            <div class="container">
+            <div class="container pr-0 pl-0">
                 <div class="row">
 
                     <!-- BUDGET TEMPLATE -->

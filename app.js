@@ -1,7 +1,25 @@
 var calcularotApp = new Vue({
     el: '#calculator-app',
     data:{
-        selected: ''
+        selected: '',
+        laserColor:{
+            papel: '',
+            dimensiones: {
+                x: 0,
+                y: 0,
+                m: 0,
+            },
+            hojas: 0,
+            lados: 1,
+            laminado: 0,
+            dispos: 0,
+            recortes: {
+                x: 0,
+                y: 0
+            },
+            corte: 'no',
+            showRecortes: false
+        }
     },
     methods:{
         addBudget: function(){
@@ -11,6 +29,14 @@ var calcularotApp = new Vue({
                 'description': '100 hojas SA3 color',
                 'cost': 30
             });
+        },
+        toggleRecortes: function(){
+            this.laserColor.showRecortes = !this.laserColor.showRecortes;
+            if (!this.laserColor.showRecortes) {
+                this.laserColor.recortes.x = 0;
+                this.laserColor.recortes.y = 0;
+                this.laserColor.corte = 'no';
+            }
         }
     }
 });
