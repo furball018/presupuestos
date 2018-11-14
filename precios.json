@@ -1,55 +1,57 @@
 {
-    "SA3G" : {
-        "unacopia" : 37,
-        "dosacinco" : 27,
-        "seisaveinte" : 23,
-        "masdeveinte" : 22
-    },
-    "SA3F" : {
-        "unacopia" : 32,
-        "dosacinco" : 22,
-        "seisaveinte" : 18,
-        "masdeveinte" : 17
-    },
-    "SA3AA" : {
-        "unacopia" : 36,
-        "dosacinco" : 30,
-        "seisaveinte" : 28,
-        "masdeveinte" : 25
-    },
-    "SA3S" : {
-        "unacopia" : 62,
-        "dosacinco" : 52,
-        "seisaveinte" : 48,
-        "masdeveinte" : 47
-    },
-    "SA3I" : {
-        "unacopia" : 115,
-        "dosacinco" : 105,
-        "seisaveinte" : 100,
-        "masdeveinte" : 95
-    },
-    "A4G" : {
-        "unacopia" : 20,
-        "dosacinco" : 16,
-        "seisaveinte" : 13,
-        "masdeveinte" : 12
-    },
-    "A4F" : {
-        "unacopia" : 18,
-        "dosacinco" : 14,
-        "seisaveinte" : 13,
-        "masdeveinte" : 12
-    },
-    "A4AA" : {
-        "unacopia" : 18,
-        "dosacinco" : 15,
-        "seisaveinte" : 14,
-        "masdeveinte" : 12
-    },
-    "papelGrueso" : 5,
-    "papelEspecial" : 30,
-    "corteGuillotina" : 10,
-    "corteMano" : 1,
-    "laminado" : 17
+    "laserColor":{
+        "SA3G" : {
+            "unacopia" : 37,
+            "dosacinco" : 27,
+            "seisaveinte" : 23,
+            "masdeveinte" : 22
+        },
+        "SA3F" : {
+            "unacopia" : 32,
+            "dosacinco" : 22,
+            "seisaveinte" : 18,
+            "masdeveinte" : 17
+        },
+        "SA3AA" : {
+            "unacopia" : 36,
+            "dosacinco" : 30,
+            "seisaveinte" : 28,
+            "masdeveinte" : 25
+        },
+        "SA3S" : {
+            "unacopia" : 62,
+            "dosacinco" : 52,
+            "seisaveinte" : 48,
+            "masdeveinte" : 47
+        },
+        "SA3I" : {
+            "unacopia" : 115,
+            "dosacinco" : 105,
+            "seisaveinte" : 100,
+            "masdeveinte" : 95
+        },
+        "A4G" : {
+            "unacopia" : 20,
+            "dosacinco" : 16,
+            "seisaveinte" : 13,
+            "masdeveinte" : 12
+        },
+        "A4F" : {
+            "unacopia" : 18,
+            "dosacinco" : 14,
+            "seisaveinte" : 13,
+            "masdeveinte" : 12
+        },
+        "A4AA" : {
+            "unacopia" : 18,
+            "dosacinco" : 15,
+            "seisaveinte" : 14,
+            "masdeveinte" : 12
+        },
+        "papelGrueso" : 5,
+        "papelEspecial" : 30,
+        "corteGuillotina" : 10,
+        "corteMano" : 1,
+        "laminado" : 17
+    }
 }

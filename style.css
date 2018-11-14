@@ -40,6 +40,10 @@ body{
     width: 130px;
 }
 
+.list-group-item{
+    padding: .25rem .5rem !important;
+}
+
 
 .section#header{
     padding-top: 0;
@@ -67,6 +71,16 @@ body{
 .section#calculator{
     min-height: 500px;
     padding: 10px 0px 40px 0px;
+}
+
+.laser-color-title{
+    border: 1px solid transparent !important; 
+    transition: all 0.2s;
+    font-size: 1.3em;
+}
+
+.laser-color-title:hover{
+    border: 1px solid grey !important; 
 }
 
 .section#print-sheet{
