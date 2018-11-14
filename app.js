@@ -309,8 +309,8 @@ var budgetApp = new Vue({
         budgets: []
     },
     methods:{
-        removeBudget: function(i){
-            this.budgets.splice(i, 1);
+        removeBudget: function(index){
+            this.budgets.splice(index, 1);
         }
     },
     computed:{

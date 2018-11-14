@@ -194,7 +194,7 @@
                 <div class="row">
 
                     <!-- BUDGET TEMPLATE -->
-                    <div class="col-md-4 animated fadeInUp" v-for="budget in budgets" :key="budget.id">
+                    <div class="col-md-4 animated fadeInUp" v-for="(budget, index) in budgets" :key="index">
                         <div class="budget paper bg-white rounded-b">
                             <div class="budget-top" :class="budget.topColor"></div>
                             <div class="budget-mid">
@@ -208,14 +208,13 @@
                             <div class="budget-bot">
                                 <p>
                                     <span>
-                                        <i class="material-icons budget-delete d-print-none" v-on:click="removeBudget(budget.id)">delete</i>
+                                        <i class="material-icons budget-delete d-print-none" v-on:click="removeBudget(index)">delete</i>
                                     </span>
                                     ${{ budget.cost }}
                                 </p>
                             </div>
                         </div>
                     </div>
-
                     <!-- END BUDGET TEMPLATE-->
 
                 </div>
