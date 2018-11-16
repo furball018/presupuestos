@@ -35,8 +35,8 @@
                     <select name="budget-type" id="budget-selector" class="form-control rounded" v-model="selected">
                         <option disabled value="">Seleccionar...</option>
                         <option value="laser-color">Laser Color</option>
-                        <option value="laser-bn">Laser Blanco y negro</option>
-                        <option value="plot-papel">Ploteos en papel</option>
+                        <option disabled value="laser-bn">Laser Blanco y negro (! proximamente)</option>
+                        <option disabled value="plot-papel">Ploteos en papel (! proximamente)</option>
                     </select>
                 </div>
             </div>
@@ -256,7 +256,7 @@
                     <div class="col-sm">
                         <hr>
                         <p class="text-right mb-0">{{ budgets.length }} item{{ budgets.length > 1? 's' : '' }}</p>
-                        <p class="text-right mb-0" v-if="discount.amount != 0">Descuento: {{ discount.type == '$'? '$' : '' }}{{ discount.amount }}{{ discount.type == '%'? '%' : '' }}</p>
+                        <p class="text-right mb-0" v-if="discount.amount != 0">Descuento: {{ discount.type == '$'? '$' : '' }}{{ discount.amount }}{{ discount.type == '%'? '%' : '' }} (sobre ${{calcTotalNoDisc}})</p>
                         <p class="total">
                             Total: ${{ calcTotal }}
                         </p>
