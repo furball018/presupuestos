@@ -34,8 +34,8 @@ var preciosData =
         "A4G" : {
             "unacopia" : 20,
             "dosacinco" : 16,
-            "seisaveinte" : 13,
-            "masdeveinte" : 12
+            "seisaveinte" : 15,
+            "masdeveinte" : 14
         },
         "A4F" : {
             "unacopia" : 18,
@@ -53,7 +53,8 @@ var preciosData =
         "papelEspecial" : 30,
         "corteGuillotina" : 10,
         "corteMano" : 1,
-        "laminado" : 17
+        "laminado" : 17,
+        "marcado" : 2
     }
 }
 
@@ -306,11 +307,30 @@ var calcularotApp = new Vue({
 var budgetApp = new Vue({
     el: '#budget-app',
     data: {
+        discount:{
+            'show': false,
+            'type': '$',
+            'amount': 0
+        },
         budgets: []
     },
     methods:{
         removeBudget: function(index){
             this.budgets.splice(index, 1);
+        },
+        removeAllBudgets : function (){
+            this.budgets = [];
+        },
+        printPage: function(){
+            window.print();
+        },
+        toggleDiscount: function(){
+            if(this.discount.show){
+                this.discount.show = false;
+                this.discount.amount = 0;
+            }else{
+                this.discount.show = true;
+            }
         }
     },
     computed:{
@@ -319,7 +339,14 @@ var budgetApp = new Vue({
             this.budgets.forEach(b => {
                 t += b.cost;
             });
-            return t;
+
+            if(this.discount.type == '$'){
+                t -= this.discount.amount;
+            }else{
+                t *= Math.abs((this.discount.amount / 100) -1);
+            }
+
+            return t.toFixed(2);
         }
     }
 });
