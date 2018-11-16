@@ -16,9 +16,9 @@
     <!-- HEADER -->
     <div id="header" class="section d-print-none">
         <div class="container">
-            <div class="row">
-                <div class="col paper bw-white rounded-b">
-                    header
+            <div class="row paper bw-white rounded-b">
+                <div class="col-sm">
+                    <div id="header-logo" class="mt-2 mb-2"></div>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
                         <h4>Laser Color</h4>
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-6 pl-0">
+                                <div class="col-md-6 pl-0 pr-0 pr-md-2">
                                     <h5>Detalles</h5>
                                     <form>
 
@@ -140,7 +140,7 @@
 
                                     </form>
                                 </div>
-                                <div class="col-md-6 pr-0">
+                                <div class="col-md-6 pr-0 pl-0 pl-md-2">
                                     <h5>Resultados</h5>
                                     <ul class="list-group mb-2" v-if="laserColor.showRecortes">
                                         <li class="list-group-item">Unidades por página<span class="resultado float-right">{{ laserColor_calcularUnidadesPorPagina }}</span></li>
@@ -280,11 +280,12 @@
     </div>
 
     <!-- FOOTER -->
-    <div class="footer-spacer"></div>
     <div id="footer" class="section d-print-none">
         <div class="container">
             <div class="row">
-                footer
+                <div class="col pr-2 pr-md-0 pl-2 pl-md-0">
+                    <a href="mailto:margonbra@gmail.com">por Martín G Bravo</a><span class="float-right text-right">&copy;2018 Corintios 13</span>
+                </div>
             </div>
         </div>
     </div>
