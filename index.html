@@ -49,6 +49,7 @@
             <div class="container animated fadeIn" v-show="selected == 'laser-color'">
                 <div class="row">
                     <div class="col-md paper bw-white rounded">
+                        <div class="color-label top-laser-color"></div>
                         <h4>Laser Color</h4>
                         <div class="container">
                             <div class="row">
@@ -152,7 +153,7 @@
                                         <li class="list-group-item">Cortes a mano<span class="resultado float-right">{{ laserColor_calcularCortesMano }}</span></li>
                                     </ul>
                                     <ul class="list-group">
-                                        <li class="list-group-item">Precio por página<span class="resultado float-right">${{ laserColor_calcularPrecioPagina + ' (x' + laserColor.hojas + ')'}}</span></li>
+                                        <li class="list-group-item">Precio por hoja<span class="resultado float-right">${{ laserColor_calcularPrecioPagina + ' (x' + laserColor.hojas + ')'}}</span></li>
                                         <li class="list-group-item">Laminado<span class="resultado float-right">${{ laserColor_calcularLaminado }}</span></li>
                                         <li class="list-group-item">Diseño/Pose<span class="resultado float-right">${{ laserColor.dispos }}</span></li>
                                         <li class="list-group-item" v-if="laserColor.showRecortes">Corte<span class="resultado float-right">${{ laserColor_calcularPrecioCorte }}</span></li>
@@ -163,11 +164,11 @@
                         </div>
 
                         <hr class="mt-2 mb-2">
-                        <input type="text" class="laser-color-title" v-model="laserColor.title"/>
+                        <input type="text" class="budget-title" v-model="laserColor.title"/>
                         <p>{{ laserColor_calcularDescription }}</p>
                         <hr class="mt-2 mb-2">
-                        <button v-on:click="addBudget()" class="btn btn-dark float-right ml-2" v-bind:class="{ disabled: laserColor.hojas == 0 }" v-bind:disabled="laserColor.hojas == 0">Agregar presupuesto</button>
-                        <button v-on:click="reiniciar()" class="btn btn-light float-right ml-2">Reiniciar</button>
+                        <button v-on:click="addBudget('laser-color')" class="btn btn-dark float-right ml-2" v-bind:class="{ disabled: laserColor.hojas == 0 }" v-bind:disabled="laserColor.hojas == 0">Agregar presupuesto</button>
+                        <button v-on:click="reiniciar('laser-color')" class="btn btn-light float-right ml-2">Reiniciar</button>
                     </div>
                 </div>
             </div>
@@ -177,7 +178,68 @@
             <div class="container animated fadeIn" v-show="selected == 'laser-bn'">
                 <div class="row">
                     <div class="col paper bw-white rounded">
-                        Laser BN
+                        <div class="color-label top-laser-bn"></div>
+                        <h4>Laser Blanco y Negro</h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 pl-0">
+                                    <h5>Detalles</h5>
+                                    <form>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-papel" class="input-group-text">Papel</label>
+                                            </div>
+                                            <select name="i-papel" id="i-papel" class="form-control" v-model="laserBN.papel">
+                                                <option value="select" disabled>Seleccionar...</option>
+                                                <option value="A3">A3</option>
+                                                <option value="A4">A4</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-hojas" class="input-group-text">Hojas</label>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="cantidad..." min="0" v-model.number="laserBN.hojas"/>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-lados" class="input-group-text">Lados Impresos</label>
+                                            </div>
+                                            <select name="i-lados" id="i-lados" class="form-control" v-model="laserBN.lados">
+                                                <option value="simplefaz">Sólo frente</option>
+                                                <option value="doblefaz">Ambos lados</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-dispos" class="input-group-text">Diseño/Pose</label>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="$..." min="0" v-model="laserBN.dispos"/>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <h5>Resultados</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Precio por hoja<span class="resultado float-right">${{ laserBN_calcularPrecioPagina + ' (x' + laserBN.hojas + ')'}}</span></li>
+                                        <li class="list-group-item">Diseño/Pose<span class="resultado float-right">${{ laserBN.dispos }}</span></li>
+                                        <li class="list-group-item">Total<span class="resultado float-right">${{ laserBN_calcularTotal }}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mt-2 mb-2">
+                        <input type="text" class="budget-title" v-model="laserBN.title"/>
+                        <p>{{ laserBN_calcularDescription }}</p>
+                        <hr class="mt-2 mb-2">
+                        <button v-on:click="addBudget('laser-bn')" class="btn btn-dark float-right ml-2" v-bind:class="{ disabled: laserBN.hojas == 0 }" v-bind:disabled="laserBN.hojas == 0">Agregar presupuesto</button>
+                        <button v-on:click="reiniciar('laser-bn')" class="btn btn-light float-right ml-2">Reiniciar</button>
                     </div>
                 </div>
             </div>

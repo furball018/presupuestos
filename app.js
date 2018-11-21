@@ -55,6 +55,28 @@ var preciosData =
         "corteMano" : 1,
         "laminado" : 17,
         "marcado" : 2
+    },
+    "laserBN":{
+        "A3":{
+            "simplefaz":{
+                "cincuentaomas" : 3.5,
+                "menosdecincuenta" : 5,
+            },
+            "doblefaz":{
+                "cincuentaomas" : 2.5,
+                "menosdecincuenta" : 3.5,
+            }
+        },
+        "A4":{
+            "simplefaz":{
+                "cincuentaomas" : 2.5,
+                "menosdecincuenta" : 3,
+            },
+            "doblefaz":{
+                "cincuentaomas" : 2,
+                "menosdecincuenta" : 2.5,
+            }
+        }
     }
 }
 
@@ -95,6 +117,19 @@ var calcularotApp = new Vue({
                 total: 0,
                 description: ''
             }
+        },
+        laserBN:{
+            title: 'Nuevo Presupuesto',
+            papel: 'select',
+            hojas: 0,
+            lados: 'simplefaz',
+            cortes: 0,
+            dispos: 0,
+            resultados:{
+                precioPagina: 0,
+                total: 0,
+                description: ''
+            }
         }
     },
     methods:{
@@ -109,40 +144,52 @@ var calcularotApp = new Vue({
                 this.laserColor.dimensiones.m = 7;
             }
         },
-        addBudget: function(){
-            budgetApp.budgets.push({
-                'topColor': 'top-blue',
-                'name': this.laserColor.title,
-                'description': this.laserColor.resultados.description,
-                'cost': this.laserColor.resultados.total
-            });
+        addBudget: function(type){
+            if(type == "laser-color"){
+                budgetApp.budgets.push({
+                    'topColor': 'top-laser-color',
+                    'name': this.laserColor.title,
+                    'description': this.laserColor.resultados.description,
+                    'cost': this.laserColor.resultados.total
+                });
+            }
+            if(type == "laser-bn"){
+                budgetApp.budgets.push({
+                    'topColor': 'top-laser-bn',
+                    'name': this.laserBN.title,
+                    'description': this.laserBN.resultados.description,
+                    'cost': this.laserBN.resultados.total
+                });
+            }
         },
-        reiniciar: function(){
-            this.laserColor.title = 'Nuevo Presupuesto';
-            this.laserColor.papel = 'select';
-            this.laserColor.dimensiones.x = 0;
-            this.laserColor.dimensiones.y = 0;
-            this.laserColor.dimensiones.m = 0;
-            this.laserColor.hojas = 0;
-            this.laserColor.lados = 1;
-            this.laserColor.laminado = 0;
-            this.laserColor.dispos = 0;
-            this.laserColor.recortes.x = 0;
-            this.laserColor.recortes.y = 0;
-            this.laserColor.corte = 'no';
-            this.laserColor.showRecortes = false;
-            this.laserColor.disableLados = false;
-            this.laserColor.resultados.invertido = false;
-            this.laserColor.resultados.unidadesTotales = 0;
-            this.laserColor.resultados.entranX = 0;
-            this.laserColor.resultados.entranY = 0;
-            this.laserColor.resultados.corteGuillotina = 0;
-            this.laserColor.resultados.corteMano = 0;
-            this.laserColor.resultados.precioPagina = 0;
-            this.laserColor.resultados.precioLaminado = 0;
-            this.laserColor.resultados.precioCorte = 0;
-            this.laserColor.resultados.total = 0;
-            this.laserColor.resultados.description = '';
+        reiniciar: function(type){
+            if(type == "laser-color"){
+                this.laserColor.title = 'Nuevo Presupuesto';
+                this.laserColor.papel = 'select';
+                this.laserColor.dimensiones.x = 0;
+                this.laserColor.dimensiones.y = 0;
+                this.laserColor.dimensiones.m = 0;
+                this.laserColor.hojas = 0;
+                this.laserColor.lados = 1;
+                this.laserColor.laminado = 0;
+                this.laserColor.dispos = 0;
+                this.laserColor.recortes.x = 0;
+                this.laserColor.recortes.y = 0;
+                this.laserColor.corte = 'no';
+                this.laserColor.showRecortes = false;
+                this.laserColor.disableLados = false;
+                this.laserColor.resultados.invertido = false;
+                this.laserColor.resultados.unidadesTotales = 0;
+                this.laserColor.resultados.entranX = 0;
+                this.laserColor.resultados.entranY = 0;
+                this.laserColor.resultados.corteGuillotina = 0;
+                this.laserColor.resultados.corteMano = 0;
+                this.laserColor.resultados.precioPagina = 0;
+                this.laserColor.resultados.precioLaminado = 0;
+                this.laserColor.resultados.precioCorte = 0;
+                this.laserColor.resultados.total = 0;
+                this.laserColor.resultados.description = '';
+            }
         },
         toggleRecortes: function(){
             this.laserColor.showRecortes = !this.laserColor.showRecortes;
@@ -189,8 +236,8 @@ var calcularotApp = new Vue({
                     descuentoDobleFaz = this.precios.laserColor.papelGrueso / 2;
                     break;
             }
-            this.laserColor.resultados.precioPagina = parseInt(this.precios.laserColor[this.laserColor.papel][categoria] * this.laserColor.lados) - descuentoDobleFaz;
-            return parseInt(this.precios.laserColor[this.laserColor.papel][categoria] * this.laserColor.lados) - descuentoDobleFaz;
+            this.laserColor.resultados.precioPagina = parseFloat(this.precios.laserColor[this.laserColor.papel][categoria] * this.laserColor.lados) - descuentoDobleFaz;
+            return parseFloat(this.precios.laserColor[this.laserColor.papel][categoria] * this.laserColor.lados) - descuentoDobleFaz;
         },
         laserColor_calcularLaminado: function(){
             var a = parseInt(this.laserColor.laminado);
@@ -271,7 +318,7 @@ var calcularotApp = new Vue({
         },
         laserColor_calcularDescription: function(){
             var d = '';
-            d += this.laserColor.hojas + ' copias';
+            d += this.laserColor.hojas + ' copias laser color';
             d += this.laserColor.papel != 'select' ? (' '+this.laserColor.papel) : '';
             var l = this.laserColor.lados == 1? 'simplefaz' : 'doblefaz';
             d+= ', ' + l;
@@ -297,6 +344,44 @@ var calcularotApp = new Vue({
             d += '.'
 
             this.laserColor.resultados.description = d;
+            return d;
+        },
+        laserBN_calcularPrecioPagina: function(){
+            var categoria;
+            var lados;
+            if (this.laserBN.hojas >= 50) {
+                categoria = 'cincuentaomas';
+            }else if(this.laserBN.hojas > 0){
+                categoria = 'menosdecincuenta';
+            }else{
+                return 0;
+            }
+
+            if(this.laserBN.lados == 'doblefaz'){
+                lados = 2;
+            }else{
+                lados = 1;
+            }
+
+            this.laserBN.resultados.precioPagina = parseFloat(this.precios.laserBN[this.laserBN.papel][this.laserBN.lados][categoria]) * lados;
+            return parseFloat(this.precios.laserBN[this.laserBN.papel][this.laserBN.lados][categoria]) * lados;
+        },
+        laserBN_calcularTotal: function(){
+            var a = parseInt(this.laserBN.resultados.precioPagina);
+            var b = parseInt(this.laserBN.hojas);
+            var c = parseInt(this.laserBN.dispos);
+            this.laserBN.resultados.total = (a * b) + c;
+            return (a * b) + c;
+        },
+        laserBN_calcularDescription: function(){
+            var d = '';
+            d += this.laserBN.hojas + ' copias blanco y negro';
+            d += this.laserBN.papel != 'select' ? (' '+this.laserBN.papel) : '';
+            d+= ', ' + this.laserBN.lados;
+            d += this.laserBN.dispos != 0 ? ' (se agregan $'+this.laserBN.dispos+' de diseño/pose)' : '';
+            d += '.'
+
+            this.laserBN.resultados.description = d;
             return d;
         }
     }
