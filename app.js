@@ -86,7 +86,7 @@ var calcularotApp = new Vue({
         selected: '',
         precios: preciosData, 
         laserColor:{
-            title: 'Nuevo Presupuesto',
+            title: 'Trabajo Laser Color',
             papel: 'select',
             dimensiones: {
                 x: 0,
@@ -430,6 +430,14 @@ var budgetApp = new Vue({
             }else{
                 t *= Math.abs((this.discount.amount / 100) -1);
             }
+
+            return t.toFixed(2);
+        },
+        calcTotalNoDisc: function(){
+            var t = 0;
+            this.budgets.forEach(b => {
+                t += b.cost;
+            });
 
             return t.toFixed(2);
         }
