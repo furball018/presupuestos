@@ -253,10 +253,10 @@
     <div id="budget-app">
         <div id="print-sheet" class="section">
             <div class="container pr-0 pl-0">
-                <div class="row mb-5">
+                <transition-group enter-active-class="animated fadeInUp" leave-active-class="position-absolute invisible" move-class="budget-pool-move" name="budget-pool" class="row mb-5" tag="div">
 
                     <!-- BUDGET TEMPLATE -->
-                    <div class="col-md-4 animated fadeInUp" v-for="(budget, index) in budgets" :key="index">
+                    <div class="col-md-4 budget-pool-item" v-for="(budget, index) in budgets" v-bind:key="budget">
                         <div class="budget paper bg-white rounded-b">
                             <div class="budget-top" :class="budget.topColor"></div>
                             <div class="budget-mid">
@@ -279,7 +279,7 @@
                     </div>
                     <!-- END BUDGET TEMPLATE-->
 
-                </div>
+                </transition-group>
                 <div class="row d-print-none" v-show="budgets.length != 0 && discount.show">
                     <div class="col-sm">
                         <hr>

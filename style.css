@@ -35,6 +35,10 @@ body{
     border-bottom-right-radius: 10px;
 }
 
+.budget-pool-move {
+    transition: all 0.6s;
+}
+
 .section#calculator .input-group-text{
     background-color: rgb(238, 245, 255) !important;
     width: 130px;
@@ -166,7 +170,7 @@ body{
     line-height: 1.5em;
     color: #dddddd;
     cursor: pointer;
-    transition: 0.2s all;
+    transition: color 0.2s;
 }
 
 .budget-delete:hover{
