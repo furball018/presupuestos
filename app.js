@@ -190,6 +190,16 @@ var calcularotApp = new Vue({
                 this.laserColor.resultados.total = 0;
                 this.laserColor.resultados.description = '';
             }
+            if(type == "laser-bn"){
+                this.laserBN.title = 'Nuevo Presupuesto';
+                this.laserBN.papel = 'select';
+                this.laserBN.hojas = 0;
+                this.laserBN.lados = 'simplefaz';
+                this.laserBN.dispos = 0;
+                this.laserBN.resultados.precioPagina = 0;
+                this.laserBN.resultados.total = 0;
+                this.laserBN.resultados.description = '';
+            }
         },
         toggleRecortes: function(){
             this.laserColor.showRecortes = !this.laserColor.showRecortes;
