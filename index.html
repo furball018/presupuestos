@@ -285,7 +285,7 @@
                         <hr>
                         <form>
                             <div class="form-row">
-                                <div class="col-3">
+                                <div class="col-md-3 mt-2 mt-md-0">
                                     <div class="input-group input-group-sm">
                                         <select class="form-control" v-model="discount.type">
                                             <option value="$">Descuento en pesos</option>
@@ -293,7 +293,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-2" v-if="discount.type == '%'">
+                                <div class="col-md-2 mt-2 mt-md-0" v-if="discount.type == '%'">
                                     <div class="input-group input-group-sm">
                                         <input type="number" class="form-control" min="0" max="100" v-model="discount.amount"/>
                                         <div class="input-group-append">
@@ -301,7 +301,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-2" v-if="discount.type == '$'">
+                                <div class="col-md-2 mt-2 mt-md-0" v-if="discount.type == '$'">
                                     <div class="input-group input-group-sm">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text">$</span>
