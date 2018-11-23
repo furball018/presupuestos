@@ -1,7 +1,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Presupuestos - Corintios 13</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
@@ -16,7 +16,7 @@
     <!-- HEADER -->
     <div id="header" class="section d-print-none">
         <div class="container">
-            <div class="row paper bw-white rounded-b">
+            <div class="row paper bw-white rounded-b ">
                 <div class="col-sm">
                     <div id="header-logo" class="mt-2 mb-2"></div>
                 </div>
@@ -168,7 +168,7 @@
                         <p>{{ laserColor_calcularDescription }}</p>
                         <hr class="mt-2 mb-2">
                         <button v-on:click="addBudget('laser-color')" class="btn btn-dark float-right ml-2" v-bind:class="{ disabled: laserColor.hojas == 0 }" v-bind:disabled="laserColor.hojas == 0">Agregar presupuesto</button>
-                        <button v-on:click="reiniciar('laser-color')" class="btn btn-light float-right ml-2">Reiniciar</button>
+                        <button v-on:click="reiniciar('laser-color')" class="btn btn-outline-secondary float-right ml-2">Reiniciar</button>
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                         <h4>Laser Blanco y Negro</h4>
                         <div class="container">
                             <div class="row">
-                                <div class="col-md-6 pl-0">
+                                <div class="col-md-6 pl-0 pr-0 pr-md-2">
                                     <h5>Detalles</h5>
                                     <form>
 
@@ -223,7 +223,7 @@
 
                                     </form>
                                 </div>
-                                <div class="col-md-6 pr-0">
+                                <div class="col-md-6 pl-0 pr-0 pl-md-2">
                                     <h5>Resultados</h5>
                                     <ul class="list-group">
                                         <li class="list-group-item">Precio por páginas<span class="resultado float-right">${{ laserBN_calcularPrecioPagina + ' (x' + laserBN.hojas + ')'}}</span></li>
@@ -239,7 +239,7 @@
                         <p>{{ laserBN_calcularDescription }}</p>
                         <hr class="mt-2 mb-2">
                         <button v-on:click="addBudget('laser-bn')" class="btn btn-dark float-right ml-2" v-bind:class="{ disabled: laserBN.hojas == 0 }" v-bind:disabled="laserBN.hojas == 0">Agregar presupuesto</button>
-                        <button v-on:click="reiniciar('laser-bn')" class="btn btn-light float-right ml-2">Reiniciar</button>
+                        <button v-on:click="reiniciar('laser-bn')" class="btn btn-outline-secondary float-right ml-2">Reiniciar</button>
                     </div>
                 </div>
             </div>
@@ -251,7 +251,7 @@
     <!-- BUDGET -->
 
     <div id="budget-app">
-        <div id="print-sheet" class="section">
+        <div id="print-sheet" class="section pl-2 pr-2">
             <div class="container pr-0 pl-0">
                 <transition-group enter-active-class="animated fadeInUp" leave-active-class="position-absolute invisible" move-class="budget-pool-move" name="budget-pool" class="row mb-5" tag="div">
 
@@ -327,8 +327,8 @@
                 <div class="row d-print-none" v-show="budgets.length != 0">
                     <div class="col-sm">
                         <button class="btn btn-dark float-right ml-2" v-on:click="printPage()">Imprimir</button>
-                        <button class="btn btn-light float-right ml-2" v-on:click="removeAllBudgets()">Borrar todo</button>
-                        <button class="btn btn-light float-right ml-2" v-on:click="toggleDiscount()">{{ discount.show? 'Quitar descuento' : 'Agregar descuento' }}</button>
+                        <button class="btn btn-outline-secondary float-right ml-2" v-on:click="removeAllBudgets()">Borrar todo</button>
+                        <button class="btn btn-outline-secondary float-right ml-2" v-on:click="toggleDiscount()">{{ discount.show? 'Quitar descuento' : 'Agregar descuento' }}</button>
                     </div>
                 </div>
                 <div class="col-sm" v-show="budgets.length == 0">
