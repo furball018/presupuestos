@@ -199,7 +199,7 @@
 
                                         <div class="input-group input-group-sm mt-2">
                                             <div class="input-group-prepend">
-                                                <label for="i-hojas" class="input-group-text">Hojas</label>
+                                                <label for="i-hojas" class="input-group-text">Páginas</label>
                                             </div>
                                             <input type="number" class="form-control" placeholder="cantidad..." min="0" v-model.number="laserBN.hojas"/>
                                         </div>
@@ -209,8 +209,8 @@
                                                 <label for="i-lados" class="input-group-text">Lados Impresos</label>
                                             </div>
                                             <select name="i-lados" id="i-lados" class="form-control" v-model="laserBN.lados">
-                                                <option value="simplefaz">Sólo frente</option>
-                                                <option value="doblefaz">Ambos lados</option>
+                                                <option value="simplefaz">Simple-Faz</option>
+                                                <option value="doblefaz">Doble-Faz</option>
                                             </select>
                                         </div>
 
@@ -226,7 +226,7 @@
                                 <div class="col-md-6 pr-0">
                                     <h5>Resultados</h5>
                                     <ul class="list-group">
-                                        <li class="list-group-item">Precio por hoja<span class="resultado float-right">${{ laserBN_calcularPrecioPagina + ' (x' + laserBN.hojas + ')'}}</span></li>
+                                        <li class="list-group-item">Precio por páginas<span class="resultado float-right">${{ laserBN_calcularPrecioPagina + ' (x' + laserBN.hojas + ')'}}</span></li>
                                         <li class="list-group-item">Diseño/Pose<span class="resultado float-right">${{ laserBN.dispos }}</span></li>
                                         <li class="list-group-item">Total<span class="resultado float-right">${{ laserBN_calcularTotal }}</span></li>
                                     </ul>

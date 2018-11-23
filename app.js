@@ -290,8 +290,8 @@ var calcularotApp = new Vue({
                 }
                 c++;
             }
-            this.laserColor.resultados.corteGuillotina = c;
-            return c;
+            this.laserColor.resultados.corteGuillotina = Math.max(4, c);
+            return Math.max(4, c);
         },
         laserColor_calcularCortesMano: function(){
             var a = parseInt(this.laserColor.resultados.entranX);
@@ -358,7 +358,6 @@ var calcularotApp = new Vue({
         },
         laserBN_calcularPrecioPagina: function(){
             var categoria;
-            var lados;
             if (this.laserBN.hojas >= 50) {
                 categoria = 'cincuentaomas';
             }else if(this.laserBN.hojas > 0){
@@ -367,14 +366,8 @@ var calcularotApp = new Vue({
                 return 0;
             }
 
-            if(this.laserBN.lados == 'doblefaz'){
-                lados = 2;
-            }else{
-                lados = 1;
-            }
-
-            this.laserBN.resultados.precioPagina = parseFloat(this.precios.laserBN[this.laserBN.papel][this.laserBN.lados][categoria]) * lados;
-            return parseFloat(this.precios.laserBN[this.laserBN.papel][this.laserBN.lados][categoria]) * lados;
+            this.laserBN.resultados.precioPagina = parseFloat(this.precios.laserBN[this.laserBN.papel][this.laserBN.lados][categoria]);
+            return parseFloat(this.precios.laserBN[this.laserBN.papel][this.laserBN.lados][categoria]);
         },
         laserBN_calcularTotal: function(){
             var a = parseInt(this.laserBN.resultados.precioPagina);
