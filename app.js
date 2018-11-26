@@ -265,8 +265,8 @@ var calcularotApp = new Vue({
 
             if(a > b){
                 this.laserColor.resultados.invertido = false;
-                this.laserColor.resultados.entranX = Math.trunc((this.laserColor.dimensiones.x - (this.laserColor.dimensiones.m * 2)) / this.laserColor.recortes.x);
-                this.laserColor.resultados.entranY = Math.trunc((this.laserColor.dimensiones.y - (this.laserColor.dimensiones.m * 2)) / this.laserColor.recortes.y);
+                this.laserColor.resultados.entranX = Math.trunc((this.laserColor.dimensiones.y - (this.laserColor.dimensiones.m * 2)) / this.laserColor.recortes.y);
+                this.laserColor.resultados.entranY = Math.trunc((this.laserColor.dimensiones.x - (this.laserColor.dimensiones.m * 2)) / this.laserColor.recortes.x);
             }else{
                 this.laserColor.resultados.invertido = true;
                 this.laserColor.resultados.entranX = Math.trunc((this.laserColor.dimensiones.x - (this.laserColor.dimensiones.m * 2)) / this.laserColor.recortes.y);
