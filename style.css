@@ -41,7 +41,7 @@ body{
 
 .section#calculator .input-group-text{
     background-color: rgb(238, 245, 255) !important;
-    width: 130px;
+    width: 140px;
 }
 
 .list-group-item{
@@ -70,7 +70,7 @@ body{
 }
 
 #budget-selector{
-    border: none;
+    border: 0;
     background-color: rgba(255, 255, 255, 0.2);
     transition: all 0.2s;
     color: white;
@@ -84,6 +84,7 @@ body{
 
 #budget-selector option{
     color: black;
+    border: 0;
 }
 
 
@@ -135,7 +136,7 @@ body{
     background: linear-gradient(135deg, #2975d1 0%,#35e0ff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2975d1', endColorstr='#35e0ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
-.top-purple{
+.top-plot-papel{
     background: #7229d1; /* Old browsers */
     background: -moz-linear-gradient(-45deg, #7229d1 0%, #b850e9 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(-45deg, #7229d1 0%,#b850e9 100%); /* Chrome10-25,Safari5.1-6 */

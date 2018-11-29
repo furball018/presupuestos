@@ -77,6 +77,19 @@ var preciosData =
                 "menosdecincuenta" : 2.5,
             }
         }
+    },
+    "plotPapel":{
+        "90cm":{
+            "lineasBN": 85,
+            "lineasColor": 105,
+            "plenos": 270
+        },
+        "60cm":{
+            "lineasBN": 75,
+            "lineasColor": 80,
+            "plenos": 220
+        },
+        "doblado": 20
     }
 }
 
@@ -130,6 +143,21 @@ var calcularotApp = new Vue({
                 total: 0,
                 description: ''
             }
+        },
+        plotPapel:{
+            title: "Nuevo Presupuesto",
+            rollo: "90cm",
+            largo: 0,
+            tipo: "lineasBN",
+            cantidad: 0,
+            doblado: 0,
+            dispos: 0,
+            resultados:{
+                precioPlano: 0,
+                precioDoblado: 0,
+                total: 0,
+                description: ""
+            }
         }
     },
     methods:{
@@ -159,6 +187,14 @@ var calcularotApp = new Vue({
                     'name': this.laserBN.title,
                     'description': this.laserBN.resultados.description,
                     'cost': this.laserBN.resultados.total
+                });
+            }
+            if (type == "plot-papel") {
+                budgetApp.budgets.push({
+                    'topColor': 'top-plot-papel',
+                    'name': this.plotPapel.title,
+                    'description': this.plotPapel.resultados.description,
+                    'cost': this.plotPapel.resultados.total
                 });
             }
         },
@@ -199,6 +235,19 @@ var calcularotApp = new Vue({
                 this.laserBN.resultados.precioPagina = 0;
                 this.laserBN.resultados.total = 0;
                 this.laserBN.resultados.description = '';
+            }
+            if(type == "plot-papel"){
+                this.plotPapel.title = 'Nuevo Presupuesto';
+                this.plotPapel.rollo = '90cm';
+                this.plotPapel.largo = 0;
+                this.plotPapel.tipo = 'lineasBN';
+                this.plotPapel.cantidad = 0;
+                this.plotPapel.doblado = 0;
+                this.plotPapel.dispos = 0;
+                this.plotPapel.resultados.precioPlano = 0;
+                this.plotPapel.resultados.precioDoblado = 0;
+                this.plotPapel.resultados.total = 0;
+                this.plotPapel.resultados.description = '';
             }
         },
         toggleRecortes: function(){
@@ -385,6 +434,42 @@ var calcularotApp = new Vue({
             d += '.'
 
             this.laserBN.resultados.description = d;
+            return d;
+        },
+        plotPapel_calcularPrecioPlano: function(){
+            var r = parseInt(this.precios.plotPapel[this.plotPapel.rollo][this.plotPapel.tipo] * (this.plotPapel.largo / 100));
+            this.plotPapel.resultados.precioPlano = r;
+            return r;
+        },
+        plotPapel_calcularPrecioDoblado: function(){
+            var r = parseFloat(this.plotPapel.doblado * this.precios.plotPapel.doblado);
+            this.plotPapel.resultados.precioDoblado = r;
+            return r;
+        },
+        plotPapel_calcularTotal: function(){
+            var a = parseFloat(this.plotPapel.resultados.precioPlano * this.plotPapel.cantidad);
+            var b = parseFloat(this.plotPapel.resultados.precioDoblado);
+            var c = parseFloat(this.plotPapel.dispos);
+            var r = a + b + c;
+            this.plotPapel.resultados.total = r;
+            return r;
+        },
+        plotPapel_calcularDescription: function(){
+            var d = '';
+            d += this.plotPapel.cantidad != 1 ? this.plotPapel.cantidad + ' ploteos' : this.plotPapel.cantidad + ' ploteo';
+            if(this.plotPapel.tipo == "lineasBN"){
+                d += ', lineas en negro';
+            }else if(this.plotPapel.tipo == "lineasColor"){
+                d += ', lineas a color';
+            }else{
+                d += ', con plenos de tinta'
+            }
+            d += ', en rollo de ' + this.plotPapel.rollo;
+            d += this.plotPapel.doblado == 0 ? '' : ' (' + this.plotPapel.doblado + ' con corte y doblado)';
+            d += this.plotPapel.dispos != 0 ? ' (se agregan $'+this.plotPapel.dispos+' de diseño/pose)' : '';
+            d += '.'
+
+            this.plotPapel.resultados.description = d;
             return d;
         }
     }

@@ -36,7 +36,7 @@
                         <option disabled value="">Seleccionar...</option>
                         <option value="laser-color">Laser Color</option>
                         <option value="laser-bn">Laser Blanco y negro</option>
-                        <option disabled value="plot-papel">Ploteos en papel (! proximamente)</option>
+                        <option value="plot-papel">Ploteos en papel</option>
                     </select>
                 </div>
             </div>
@@ -240,6 +240,87 @@
                         <hr class="mt-2 mb-2">
                         <button v-on:click="addBudget('laser-bn')" class="btn btn-dark float-right ml-2" v-bind:class="{ disabled: laserBN.hojas == 0 }" v-bind:disabled="laserBN.hojas == 0">Agregar presupuesto</button>
                         <button v-on:click="reiniciar('laser-bn')" class="btn btn-outline-secondary float-right ml-2">Reiniciar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- END LASER BLANCO Y NEGRO -->
+            
+            <!-- PLOTEOS EN PAPEL -->
+            <div class="container animated fadeIn" v-show="selected == 'plot-papel'">
+                <div class="row">
+                    <div class="col paper bw-white rounded">
+                        <div class="color-label top-plot-papel"></div>
+                        <h4>Ploteos en papel</h4>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 pl-0 pr-0 pr-md-2">
+                                    <h5>Detalles</h5>
+                                    <form>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-dimensiones" class="input-group-text">Dimensiones (cm)</label>
+                                            </div>
+                                            <select name="i-dimensiones" id="i-dimensiones" class="form-control" v-model="plotPapel.rollo">
+                                                <option value="select" disabled>Seleccionar...</option>
+                                                <option value="90cm">90 cm</option>
+                                                <option value="60cm">60 cm</option>
+                                            </select>
+                                            <input type="number" class="form-control" placeholder="mm..." min="0" v-model.number="plotPapel.largo"/>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-tipo" class="input-group-text">Tipo de impresión</label>
+                                            </div>
+                                            <select name="i-tipo" id="i-tipo" class="form-control" v-model="plotPapel.tipo">
+                                                <option value="lineasBN">Lineas tinta negra</option>
+                                                <option value="lineasColor">Lineas tinta color</option>
+                                                <option value="plenos">Plenos/Imágenes</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-cantidad" class="input-group-text">Cantidad de copias</label>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="Cantidad..." min="0" v-model.number="plotPapel.cantidad"/>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-doblado" class="input-group-text">Corte y doblado</label>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="$..." min="0" :max="plotPapel.cantidad" v-model="plotPapel.doblado"/>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
+                                                <label for="i-dispos" class="input-group-text">Diseño/Pose</label>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="$..." min="0" v-model="plotPapel.dispos"/>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="col-md-6 pl-0 pr-0 pl-md-2">
+                                    <h5>Resultados</h5>
+                                    <ul class="list-group">
+                                        <li class="list-group-item">Precio por plano<span class="resultado float-right">${{ plotPapel_calcularPrecioPlano + ' (x' + plotPapel.cantidad + ')'}}</span></li>
+                                        <li class="list-group-item">Doblado y marcado<span class="resultado float-right">${{ plotPapel_calcularPrecioDoblado }}</span></li>
+                                        <li class="list-group-item">Diseño/Pose<span class="resultado float-right">${{ plotPapel.dispos }}</span></li>
+                                        <li class="list-group-item">Total<span class="resultado float-right">${{ plotPapel_calcularTotal }}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="mt-2 mb-2">
+                        <input type="text" class="budget-title" v-model="laserBN.title"/>
+                        <p>{{ plotPapel_calcularDescription }}</p>
+                        <hr class="mt-2 mb-2">
+                        <button v-on:click="addBudget('plot-papel')" class="btn btn-dark float-right ml-2" v-bind:class="{ disabled: plotPapel.cantidad == 0 }" v-bind:disabled="plotPapel.cantidad == 0">Agregar presupuesto</button>
+                        <button v-on:click="reiniciar('plot-papel')" class="btn btn-outline-secondary float-right ml-2">Reiniciar</button>
                     </div>
                 </div>
             </div>
