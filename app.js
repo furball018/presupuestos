@@ -60,21 +60,21 @@ var preciosData =
         "A3":{
             "simplefaz":{
                 "cincuentaomas" : 3.5,
-                "menosdecincuenta" : 5,
+                "menosdecincuenta" : 5
             },
             "doblefaz":{
                 "cincuentaomas" : 2.5,
-                "menosdecincuenta" : 3.5,
+                "menosdecincuenta" : 3.5
             }
         },
         "A4":{
             "simplefaz":{
                 "cincuentaomas" : 2.5,
-                "menosdecincuenta" : 3,
+                "menosdecincuenta" : 3
             },
             "doblefaz":{
                 "cincuentaomas" : 2,
-                "menosdecincuenta" : 2.5,
+                "menosdecincuenta" : 2.5
             }
         }
     },
