@@ -33,8 +33,8 @@
         "A4G" : {
             "unacopia" : 20,
             "dosacinco" : 16,
-            "seisaveinte" : 13,
-            "masdeveinte" : 12
+            "seisaveinte" : 15,
+            "masdeveinte" : 14
         },
         "A4F" : {
             "unacopia" : 18,
@@ -52,6 +52,42 @@
         "papelEspecial" : 30,
         "corteGuillotina" : 10,
         "corteMano" : 1,
-        "laminado" : 17
+        "laminado" : 17,
+        "marcado" : 2
+    },
+    "laserBN":{
+        "A3":{
+            "simplefaz":{
+                "cincuentaomas" : 3.5,
+                "menosdecincuenta" : 5
+            },
+            "doblefaz":{
+                "cincuentaomas" : 2.5,
+                "menosdecincuenta" : 3.5
+            }
+        },
+        "A4":{
+            "simplefaz":{
+                "cincuentaomas" : 2.5,
+                "menosdecincuenta" : 3
+            },
+            "doblefaz":{
+                "cincuentaomas" : 2,
+                "menosdecincuenta" : 2.5
+            }
+        }
+    },
+    "plotPapel":{
+        "90cm":{
+            "lineasBN": 85,
+            "lineasColor": 105,
+            "plenos": 270
+        },
+        "60cm":{
+            "lineasBN": 75,
+            "lineasColor": 80,
+            "plenos": 220
+        },
+        "doblado": 20
     }
 }
