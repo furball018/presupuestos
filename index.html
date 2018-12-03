@@ -338,7 +338,7 @@
 
                     <!-- BUDGET TEMPLATE -->
                     <div class="col-md-4 budget-pool-item" v-for="(budget, index) in budgets" v-bind:key="budget">
-                        <div class="budget paper bg-white rounded-b">
+                        <div class="budget paper bg-white rounded-b" v-bind:class="{'budget-inactive': !budget.active}">
                             <div class="budget-top" :class="budget.topColor"></div>
                             <div class="budget-mid">
                                 <h5>
@@ -351,9 +351,13 @@
                             <div class="budget-bot">
                                 <p>
                                     <span>
-                                        <i class="material-icons budget-delete d-print-none" v-on:click="removeBudget(index)">delete</i>
+                                        <i class="material-icons budget-side-button d-print-none" v-on:click="removeBudget(index)">delete</i>
+                                        <i class="material-icons budget-side-button d-print-none" v-if="budget.active" v-on:click="budget.active = !budget.active">toggle_off</i>
+                                        <i class="material-icons budget-side-button d-print-none" v-if="!budget.active" v-on:click="budget.active = !budget.active">toggle_on</i>
                                     </span>
-                                    ${{ budget.cost }}
+                                    <span :class="{'crossed': !budget.active}">
+                                        ${{ budget.cost }}
+                                    </span>
                                 </p>
                             </div>
                         </div>

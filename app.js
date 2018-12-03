@@ -178,7 +178,8 @@ var calcularotApp = new Vue({
                     'topColor': 'top-laser-color',
                     'name': this.laserColor.title,
                     'description': this.laserColor.resultados.description,
-                    'cost': this.laserColor.resultados.total
+                    'cost': this.laserColor.resultados.total,
+                    'active': true
                 });
             }
             if(type == "laser-bn"){
@@ -186,7 +187,8 @@ var calcularotApp = new Vue({
                     'topColor': 'top-laser-bn',
                     'name': this.laserBN.title,
                     'description': this.laserBN.resultados.description,
-                    'cost': this.laserBN.resultados.total
+                    'cost': this.laserBN.resultados.total,
+                    'active': true
                 });
             }
             if (type == "plot-papel") {
@@ -194,7 +196,8 @@ var calcularotApp = new Vue({
                     'topColor': 'top-plot-papel',
                     'name': this.plotPapel.title,
                     'description': this.plotPapel.resultados.description,
-                    'cost': this.plotPapel.resultados.total
+                    'cost': this.plotPapel.resultados.total,
+                    'active': true
                 });
             }
         },
@@ -510,7 +513,9 @@ var budgetApp = new Vue({
         calcTotal: function(){
             var t = 0;
             this.budgets.forEach(b => {
-                t += b.cost;
+                if(b.active){
+                    t += b.cost;
+                }
             });
 
             if(this.discount.type == '$'){
