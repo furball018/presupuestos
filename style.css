@@ -116,10 +116,12 @@ body{
     margin-top: 10px;
     margin-bottom: 10px;
     overflow: hidden;
+    transition: opacity 0.5s;
 }
 
 .budget-inactive{
     opacity: 0.4;
+    transition: opacity 0.5s;
 }
 
 .budget-top{

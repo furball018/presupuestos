@@ -82,12 +82,14 @@ var preciosData =
         "90cm":{
             "lineasBN": 85,
             "lineasColor": 105,
-            "plenos": 270
+            "plenos": 270,
+            "altadefinicion": 345
         },
         "60cm":{
             "lineasBN": 75,
             "lineasColor": 80,
-            "plenos": 220
+            "plenos": 220,
+            "altadefinicion": 290
         },
         "doblado": 20
     }

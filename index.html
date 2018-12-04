@@ -276,7 +276,8 @@
                                             <select name="i-tipo" id="i-tipo" class="form-control" v-model="plotPapel.tipo">
                                                 <option value="lineasBN">Lineas tinta negra</option>
                                                 <option value="lineasColor">Lineas tinta color</option>
-                                                <option value="plenos">Plenos/Imágenes</option>
+                                                <option value="plenos">Plenos</option>
+                                                <option value="altadefinicion">Imágenes alta definición</option>
                                             </select>
                                         </div>
 
@@ -324,7 +325,7 @@
                     </div>
                 </div>
             </div>
-            <!-- END LASER BLANCO Y NEGRO -->
+            <!-- END PLOTEOS EN PAPEL -->
     
         </div>
     </div>
@@ -352,8 +353,7 @@
                                 <p>
                                     <span>
                                         <i class="material-icons budget-side-button d-print-none" v-on:click="removeBudget(index)">delete</i>
-                                        <i class="material-icons budget-side-button d-print-none" v-if="budget.active" v-on:click="budget.active = !budget.active">toggle_off</i>
-                                        <i class="material-icons budget-side-button d-print-none" v-if="!budget.active" v-on:click="budget.active = !budget.active">toggle_on</i>
+                                        <i class="material-icons budget-side-button d-print-none ml-2" v-on:click="budget.active = !budget.active">{{ budget.active? 'toggle_off' : 'toggle_on' }}</i>
                                     </span>
                                     <span :class="{'crossed': !budget.active}">
                                         ${{ budget.cost }}
