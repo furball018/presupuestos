@@ -286,7 +286,8 @@
                                             <select name="i-tipo" id="i-tipo" class="form-control" v-model="plotPapel.tipo">
                                                 <option value="lineasBN">Lineas tinta negra</option>
                                                 <option value="lineasColor">Lineas tinta color</option>
-                                                <option value="plenos">Plenos/Imágenes</option>
+                                                <option value="plenos">Plenos</option>
+                                                <option value="altadefinicion">Imágenes alta definición</option>
                                             </select>
                                         </div>
 
@@ -334,7 +335,7 @@
                     </div>
                 </div>
             </div>
-            <!-- END LASER BLANCO Y NEGRO -->
+            <!-- END PLOTEOS EN PAPEL -->
     
         </div>
     </div>
@@ -348,7 +349,7 @@
 
                     <!-- BUDGET TEMPLATE -->
                     <div class="col-md-4 budget-pool-item" v-for="(budget, index) in budgets" v-bind:key="budget">
-                        <div class="budget paper bg-white rounded-b">
+                        <div class="budget paper bg-white rounded-b" v-bind:class="{'budget-inactive': !budget.active}">
                             <div class="budget-top" :class="budget.topColor"></div>
                             <div class="budget-mid">
                                 <h5>
@@ -361,9 +362,12 @@
                             <div class="budget-bot">
                                 <p>
                                     <span>
-                                        <i class="material-icons budget-delete d-print-none" v-on:click="removeBudget(index)">delete</i>
+                                        <i class="material-icons budget-side-button d-print-none" v-on:click="removeBudget(index)">delete</i>
+                                        <i class="material-icons budget-side-button d-print-none ml-2" v-on:click="budget.active = !budget.active">{{ budget.active? 'toggle_off' : 'toggle_on' }}</i>
                                     </span>
-                                    ${{ budget.cost }}
+                                    <span :class="{'crossed': !budget.active}">
+                                        ${{ budget.cost }}
+                                    </span>
                                 </p>
                             </div>
                         </div>
