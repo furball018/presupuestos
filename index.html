@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Presupuestos - Corintios 13</title>
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -113,6 +115,13 @@
 
                                         <div class="input-group input-group-sm mt-2">
                                             <div class="input-group-prepend">
+                                                <label for="i-marcas" class="input-group-text">Marcas por hoja</label>
+                                            </div>
+                                            <input type="number" class="form-control" placeholder="0" min="0" v-model="laserColor.marcas"/>
+                                        </div>
+
+                                        <div class="input-group input-group-sm mt-2">
+                                            <div class="input-group-prepend">
                                                 <label for="i-dispos" class="input-group-text">Diseño/Pose</label>
                                             </div>
                                             <input type="number" class="form-control" placeholder="$..." min="0" v-model="laserColor.dispos"/>
@@ -155,6 +164,7 @@
                                     <ul class="list-group">
                                         <li class="list-group-item">Precio por hoja<span class="resultado float-right">${{ laserColor_calcularPrecioPagina + ' (x' + laserColor.hojas + ')'}}</span></li>
                                         <li class="list-group-item">Laminado<span class="resultado float-right">${{ laserColor_calcularLaminado }}</span></li>
+                                        <li class="list-group-item">Marcado<span class="resultado float-right">${{ laserColor_calcularMarcas }}</span></li>
                                         <li class="list-group-item">Diseño/Pose<span class="resultado float-right">${{ laserColor.dispos }}</span></li>
                                         <li class="list-group-item" v-if="laserColor.showRecortes">Corte<span class="resultado float-right">${{ laserColor_calcularPrecioCorte }}</span></li>
                                         <li class="list-group-item">Total<span class="resultado float-right">$ {{laserColor_calcularTotal}}</span></li>

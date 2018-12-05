@@ -54,7 +54,7 @@ var preciosData =
         "corteGuillotina" : 10,
         "corteMano" : 1,
         "laminado" : 17,
-        "marcado" : 2
+        "marcas" : 2
     },
     "laserBN":{
         "A3":{
@@ -109,6 +109,7 @@ var calcularotApp = new Vue({
             hojas: 0,
             lados: 1,
             laminado: 0,
+            marcas: 0,
             dispos: 0,
             recortes: {
                 x: 0,
@@ -126,6 +127,7 @@ var calcularotApp = new Vue({
                 corteMano: 0,
                 precioPagina: 0,
                 precioLaminado: 0,
+                precioMarcas: 0,
                 precioCorte: 0,
                 total: 0,
                 description: ''
@@ -303,6 +305,13 @@ var calcularotApp = new Vue({
             var b = parseInt(this.precios.laserColor.laminado);
             var c = parseInt(this.laserColor.hojas);
             this.laserColor.resultados.precioLaminado = a * b * c;
+            return a * b * c;
+        },
+        laserColor_calcularMarcas: function(){
+            var a = parseInt(this.laserColor.marcas);
+            var b = parseInt(this.precios.laserColor.marcas);
+            var c = parseInt(this.laserColor.hojas);
+            this.laserColor.resultados.precioMarcas = a * b * c;
             return a * b * c;
         },
         laserColor_calcularUnidadesPorPagina: function(){
