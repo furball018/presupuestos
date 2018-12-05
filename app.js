@@ -101,7 +101,7 @@ var calcularotApp = new Vue({
         selected: '',
         precios: preciosData, 
         laserColor:{
-            title: 'Trabajo Laser Color',
+            title: 'Presupuesto Nuevo',
             papel: 'select',
             dimensiones: {
                 x: 0,
@@ -136,7 +136,7 @@ var calcularotApp = new Vue({
             }
         },
         laserBN:{
-            title: 'Nuevo Presupuesto',
+            title: 'Presupuesto Nuevo',
             papel: 'select',
             hojas: 0,
             lados: 'simplefaz',
@@ -149,7 +149,7 @@ var calcularotApp = new Vue({
             }
         },
         plotPapel:{
-            title: "Nuevo Presupuesto",
+            title: "Presupuesto Nuevo",
             rollo: "90cm",
             largo: 0,
             tipo: "lineasBN",
@@ -207,7 +207,7 @@ var calcularotApp = new Vue({
         },
         reiniciar: function(type){
             if(type == "laser-color"){
-                this.laserColor.title = 'Nuevo Presupuesto';
+                this.laserColor.title = 'Presupuesto Nuevo';
                 this.laserColor.papel = 'select';
                 this.laserColor.dimensiones.x = 0;
                 this.laserColor.dimensiones.y = 0;
@@ -234,7 +234,7 @@ var calcularotApp = new Vue({
                 this.laserColor.resultados.description = '';
             }
             if(type == "laser-bn"){
-                this.laserBN.title = 'Nuevo Presupuesto';
+                this.laserBN.title = 'Presupuesto Nuevo';
                 this.laserBN.papel = 'select';
                 this.laserBN.hojas = 0;
                 this.laserBN.lados = 'simplefaz';
@@ -244,7 +244,7 @@ var calcularotApp = new Vue({
                 this.laserBN.resultados.description = '';
             }
             if(type == "plot-papel"){
-                this.plotPapel.title = 'Nuevo Presupuesto';
+                this.plotPapel.title = 'Presupuesto Nuevo';
                 this.plotPapel.rollo = '90cm';
                 this.plotPapel.largo = 0;
                 this.plotPapel.tipo = 'lineasBN';

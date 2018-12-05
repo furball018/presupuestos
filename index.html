@@ -353,7 +353,7 @@
                             <div class="budget-top" :class="budget.topColor"></div>
                             <div class="budget-mid">
                                 <h5>
-                                    {{ budget.name }}
+                                    {{ budget.name == 'Presupuesto Nuevo' ? 'Presupuesto ' + (index+1) : budget.name }}
                                 </h5>
                                 <p>
                                     {{ budget.description }}
