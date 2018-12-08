@@ -215,6 +215,7 @@ var calcularotApp = new Vue({
                 this.laserColor.hojas = 0;
                 this.laserColor.lados = 1;
                 this.laserColor.laminado = 0;
+                this.laserColor.marcas = 0;
                 this.laserColor.dispos = 0;
                 this.laserColor.recortes.x = 0;
                 this.laserColor.recortes.y = 0;
