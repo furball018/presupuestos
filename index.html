@@ -39,6 +39,7 @@
                         <option value="laser-color">Laser Color</option>
                         <option value="laser-bn">Laser Blanco y negro</option>
                         <option value="plot-papel">Ploteos en papel</option>
+                        <option value="presupuesto-manual">Presupuesto Manual</option>
                     </select>
                 </div>
             </div>
@@ -336,6 +337,46 @@
                 </div>
             </div>
             <!-- END PLOTEOS EN PAPEL -->
+
+            <!-- PRESUPUESTO MANUAL -->
+            <div class="container animated fadeIn" v-show="selected == 'presupuesto-manual'">
+                <div class="row">
+                    <div class="col paper bw-white rounded">
+                        <div class="color-label top-custom-budget"></div>
+                        <h4>Presupuesto Manual</h4>
+                        <div class="container">
+                            <div class="row">
+
+                                <div class="input-group input-group-sm mt-2">
+                                    <div class="input-group-prepend">
+                                        <label for="i-title" class="input-group-text">Título</label>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Título..." v-model.number="customBudget.title"/>
+                                </div>
+
+                                <div class="input-group input-group-sm mt-2">
+                                    <div class="input-group-prepend">
+                                        <label for="i-description" class="input-group-text">Descripción</label>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Descripción..." v-model.number="customBudget.description"/>
+                                </div>
+                                
+                                <div class="input-group input-group-sm mt-2">
+                                    <div class="input-group-prepend">
+                                        <label for="i-total" class="input-group-text">Total</label>
+                                    </div>
+                                    <input type="number" class="form-control" placeholder="Total..." min="0" v-model.number="customBudget.total"/>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr class="mt-2 mb-2">
+                        <button v-on:click="addBudget('custom-budget')" class="btn btn-dark float-right ml-2" v-bind:class="{ disabled: (customBudget.total == 0 || customBudget.description == '') }" v-bind:disabled="customBudget.total == 0 || customBudget.description == ''">Agregar presupuesto</button>
+                        <button v-on:click="reiniciar('custom-budget')" class="btn btn-outline-secondary float-right ml-2">Reiniciar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- END PRESUPUESTO MANUAL -->
     
         </div>
     </div>

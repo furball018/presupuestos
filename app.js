@@ -162,6 +162,11 @@ var calcularotApp = new Vue({
                 total: 0,
                 description: ""
             }
+        },
+        customBudget:{
+            title: "Presupuesto Nuevo",
+            description: "",
+            total: 0
         }
     },
     methods:{
@@ -201,6 +206,15 @@ var calcularotApp = new Vue({
                     'name': this.plotPapel.title,
                     'description': this.plotPapel.resultados.description,
                     'cost': this.plotPapel.resultados.total,
+                    'active': true
+                });
+            }
+            if (type == "custom-budget") {
+                budgetApp.budgets.push({
+                    'topColor': 'top-custom-budget',
+                    'name': this.customBudget.title,
+                    'description': this.customBudget.description,
+                    'cost': this.customBudget.total,
                     'active': true
                 });
             }
@@ -256,6 +270,11 @@ var calcularotApp = new Vue({
                 this.plotPapel.resultados.precioDoblado = 0;
                 this.plotPapel.resultados.total = 0;
                 this.plotPapel.resultados.description = '';
+            }
+            if(type == "custom-budget"){
+                this.customBudget.title = 'Presupuesto Nuevo';
+                this.customBudget.description = '';
+                this.customBudget.total = 0;
             }
         },
         toggleRecortes: function(){
